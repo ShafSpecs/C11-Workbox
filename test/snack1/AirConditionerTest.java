@@ -12,7 +12,7 @@ public class AirConditionerTest {
 
         boolean acState = samsungAc.getAcOn();
 
-        assertEquals(false, acState);
+        assertFalse(acState);
     }
 
     @Test
@@ -32,5 +32,38 @@ public class AirConditionerTest {
         lg.turnOff();
 
         assertFalse(lg.getAcOn());
+    }
+
+    @Test
+    public void changeTemperatureTest() {
+        AirConditioner lg = new AirConditioner();
+
+        lg.changeTemperature(23);
+
+        assertEquals(23, lg.getTemperature());
+    }
+
+    @Test
+    public void temperatureMinTest() {
+        AirConditioner paramount = new AirConditioner();
+
+        paramount.changeTemperature(18);
+        int initialLowerTemperature = paramount.getTemperature();
+        paramount.changeTemperature(15);
+        int finalLowerTemperature = paramount.getTemperature();
+
+        assertEquals(16, finalLowerTemperature);
+    }
+
+    @Test
+    public void temperatureMaxTest() {
+        AirConditioner samsung = new AirConditioner();
+
+        samsung.changeTemperature(23);
+        int initialHigherTemperature = samsung.getTemperature();
+        samsung.changeTemperature(35);
+        int finalHigherTemperature = samsung.getTemperature();
+
+        assertEquals(30, finalHigherTemperature);
     }
 }
