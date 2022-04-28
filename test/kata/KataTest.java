@@ -158,4 +158,19 @@ public class KataTest {
 
         assertEquals("Even", even);
     }
+
+    @Test
+    public void gradeBasicTest() {
+        assertEquals("Pass", Kata.grade(95));
+        assertEquals("Fail", Kata.grade(51));
+    }
+
+    @Test
+    public void gradeCompTest() {
+        assertEquals("A", Kata.gradingSystem(99));
+        assertEquals("B", Kata.gradingSystem(84));
+        assertEquals("C", Kata.gradingSystem(75));
+        assertEquals("D", Kata.gradingSystem(69));
+        assertEquals("F", Kata.gradingSystem(58));
+    }
 }

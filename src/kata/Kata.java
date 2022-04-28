@@ -20,6 +20,39 @@ public class Kata {
         }
     }
 
+    public static String grade(int grade) {
+        if (grade >= 55) {
+            return "Pass";
+        }
+
+        return "Fail";
+    }
+
+    public static String gradingSystem(int score) {
+        if (score >= 90) {
+            System.out.println("A");
+            return "A";
+        }
+
+        if (score >= 80 && score < 90) {
+            System.out.println("B");
+            return "B";
+        }
+
+        if (score >= 70 && score < 80) {
+            System.out.println("C");
+            return "C";
+        }
+
+        if (score >= 60 && score < 70) {
+            System.out.println("D");
+            return "D";
+        }
+
+        System.out.println("F");
+        return "F";
+    }
+
     public int add(int firstNum, int secondNum) {
         return firstNum + secondNum;
     }
