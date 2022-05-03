@@ -1,5 +1,8 @@
 package uber;
 
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+
 import java.sql.Array;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -28,7 +31,8 @@ public class LargeSmallNum {
         }
     }
 
-    public static int[] addArrayElements(int n, int array[], int newNum) {
+    @Contract(pure = true)
+    public static int @NotNull [] addArrayElements(int n, int[] array, int newNum) {
         int[] newArr = new int[n + 1];
         for (int i = 0; i < n; i++) {
             newArr[i] = array[i];
