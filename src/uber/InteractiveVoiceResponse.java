@@ -45,6 +45,7 @@ public class InteractiveVoiceResponse {
                     }
                 }
             }
+
             case 2 -> {
                 System.out.println();
                 System.out.println("Press 1 for Sharing");
@@ -71,6 +72,7 @@ public class InteractiveVoiceResponse {
                     }
                 }
             }
+
             case 3 -> {
                 System.out.println();
                 System.out.println("Press 1 for egg");
@@ -97,6 +99,7 @@ public class InteractiveVoiceResponse {
                     }
                 }
             }
+
             case 4 -> {
                 System.out.println();
                 System.out.println("Press 1 for Ayo");
@@ -123,6 +126,7 @@ public class InteractiveVoiceResponse {
                     }
                 }
             }
+
             default -> {
                 System.out.println("Invalid number entered, try again");
                 System.exit(1);
@@ -136,9 +140,7 @@ public class InteractiveVoiceResponse {
         int firstOption = userInput.nextInt();
 
         switch (firstOption) {
-            case 1 -> {
-                break;
-            }
+            case 1 -> {}
 
             case 0 -> {
                 System.out.println("App successfully exited!");
