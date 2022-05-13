@@ -1,5 +1,7 @@
 package kata;
 
+import java.util.ArrayList;
+
 public class Kata {
     private int orderNumber;
     private int price;
@@ -51,6 +53,20 @@ public class Kata {
 
         System.out.println("F");
         return "F";
+    }
+
+    public static int checkFactors (int toBeCalculated) {
+        ArrayList<Integer> factors = new ArrayList<>();
+
+        for (int i = 1; i <= toBeCalculated; i++) {
+            for (int j = 1; j <= i; j++) {
+                if(toBeCalculated % j == 0 && !factors.contains(j)) {
+                    factors.add(j);
+                }
+            }
+        }
+
+        return factors.size();
     }
 
     public int add(int firstNum, int secondNum) {

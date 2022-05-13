@@ -173,4 +173,13 @@ public class KataTest {
         assertEquals("D", Kata.gradingSystem(69));
         assertEquals("F", Kata.gradingSystem(58));
     }
+
+    @Test
+    public void factorTest() {
+        int factors = Kata.checkFactors(5);
+        assertEquals(2, factors);
+
+        factors = Kata.checkFactors(18);
+        assertEquals(6, factors);
+    }
 }
