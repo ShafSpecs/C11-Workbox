@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class UnlimitedQuestions {
     public static void main(String[] args) {
-        System.out.println("Welcome to the questionnaire that is unlimited except you aren' an olodo!");
+        System.out.println("Welcome to the questionnaire that is unlimited except you aren't an olodo!");
 
         System.out.println("How many questions do you want to answer?");
         System.out.print("> ");

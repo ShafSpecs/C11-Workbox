@@ -160,6 +160,7 @@ public class Nokia {
                         System.out.println("""
                                 1. Type Of View
                                 2. Memory Status
+                                0. Back
                                 
                                 > """);
 
@@ -167,6 +168,11 @@ public class Nokia {
 
                         switch (userChoice2
                         ) {
+                            case 0 -> {
+                                triggerSubMenu(0);
+                                break;
+                            }
+
                             case 1 -> {
                                 System.out.println("Type Of View");
                                 break;
@@ -267,11 +273,17 @@ public class Nokia {
                         System.out.println("Message Settings");
                         System.out.println("1. Set 1");
                         System.out.println("2. Common");
+                        System.out.println("0. Back");
                         System.out.print("> ");
 
                         int bottomMessageOutput = userInput.nextInt();
 
                         switch (bottomMessageOutput) {
+                            case 0 -> {
+                                triggerSubMenu(1);
+                                break;
+                            }
+
                             case 1 -> {
                                 System.out.println("Set 1");
                                 System.out.print("""
@@ -439,12 +451,18 @@ public class Nokia {
                                 3. Received calls’ duration
                                 4. Dialled calls’ duration
                                 5. Clear timers
+                                0. Back
                                                                 
                                 > """);
 
                         int bottomMessageOutput = userInput.nextInt();
 
                         switch (bottomMessageOutput) {
+                            case 0 -> {
+                                triggerSubMenu(3);
+                                break;
+                            }
+
                             case 1 -> {
                                 System.out.println("Last call duration");
                                 break;
@@ -485,11 +503,17 @@ public class Nokia {
                                 1. Last call cost
                                 2. All calls’ cost
                                 3. Clear counters
+                                0. Back
                                                              
                                 > """);
                         int bottomMessageOutput = userInput.nextInt();
 
                         switch (bottomMessageOutput) {
+                            case 0 -> {
+                                triggerSubMenu(3);
+                                break;
+                            }
+
                             case 1 -> {
                                 System.out.println("Last call cost");
                                 break;
@@ -519,11 +543,17 @@ public class Nokia {
                         System.out.print("""
                                 1. Call cost limit
                                 2. Show costs in
+                                0. Back
                                                                
                                 > """);
                         int bottomMessageOutput = userInput.nextInt();
 
                         switch (bottomMessageOutput) {
+                            case 0 -> {
+                                triggerSubMenu(3);
+                                break;
+                            }
+
                             case 1 -> {
                                 System.out.println("Call cost limit");
                                 break;
@@ -670,11 +700,17 @@ public class Nokia {
                                 4. Own number sending
                                 5. Phone line in use
                                 6. Automatic answer
+                                0. Back
                                 
                                 > """);
                         int bottomMessageOutput = userInput.nextInt();
 
                         switch (bottomMessageOutput) {
+                            case 0 -> {
+                                triggerSubMenu(5);
+                                break;
+                            }
+
                             case 1 -> {
                                 System.out.println("Automatic redial");
                                 break;
@@ -723,11 +759,17 @@ public class Nokia {
                                 4. Network selection
                                 5. Lights2
                                 6. Confirm SIM service actions
+                                0. Back
                                                                 
                                 > """);
                         int bottomMessageOutput = userInput.nextInt();
 
                         switch (bottomMessageOutput) {
+                            case 0 -> {
+                                triggerSubMenu(5);
+                                break;
+                            }
+
                             case 1 -> {
                                 System.out.println("Language");
                                 break;
@@ -776,11 +818,17 @@ public class Nokia {
                                 4. Closed user group
                                 5. Phone security
                                 6. Change access codes
+                                0. Back
                                                                 
                                 > """);
                         int bottomMessageOutput = userInput.nextInt();
 
                         switch (bottomMessageOutput) {
+                            case 0 -> {
+                                triggerSubMenu(5);
+                                break;
+                            }
+
                             case 1 -> {
                                 System.out.println("PIN code request");
                                 break;
