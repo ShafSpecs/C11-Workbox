@@ -7,6 +7,10 @@ public class Nokia {
     public static Scanner userInput = new Scanner(System.in);
     public static String[] menu = new String[13];
 
+//    public static int[] subSubMenu = new int[1];
+
+//    public static int[] subSubSubMenu = new int[1];
+
     public static void main(String[] args) throws InterruptedException {
         System.out.println("Welcome to your 'Nokia 3310: God Punish You' Edition!");
 
@@ -20,11 +24,9 @@ public class Nokia {
 
         System.out.print("> ");
 
-        char launchKey = userInput.nextLine().charAt(0);
+        char launchKey = userInput.next().charAt(0);
 
         System.out.println();
-
-        promptChecker(launchKey);
 
         menu[0] = "Phone book";
         menu[1] = "Messages";
@@ -40,6 +42,39 @@ public class Nokia {
         menu[11] = "Profiles";
         menu[12] = "SIM Services";
 
+        promptChecker(launchKey);
+
+        triggerMainMenu(menu);
+    }
+
+    public static void promptChecker(char input) throws InterruptedException {
+        switch (input) {
+            case 'm' -> {
+                triggerMainMenu(menu);
+                break;
+            }
+
+            case 'c' -> {
+                triggerSubMenu(4);
+                break;
+            }
+
+            case 'q' -> {
+                System.out.println("Logging off...");
+                TimeUnit.SECONDS.sleep(1);
+                System.out.println("Goodbye!");
+                System.exit(0);
+            }
+
+            default -> {
+                char retry = userInput.next().charAt(0);
+                System.out.println("Invalid input. Please enter a valid key");
+                promptChecker(retry);
+            }
+        }
+    }
+
+    public static void triggerMainMenu (String[] menu) throws InterruptedException {
         System.out.println("Pick any of the following options from the menu: ");
 
         for (int i = 1; i <= menu.length; i++) {
@@ -52,55 +87,39 @@ public class Nokia {
         triggerSubMenu(menuOption - 1);
     }
 
-    public static void promptChecker(char input) throws InterruptedException {
-        switch (input) {
-            case 'm' -> {}
-
-            case 'c' -> {
-                break;
-            }
-
-            case 'q' -> {
-                System.out.println("Logging off...");
-                TimeUnit.SECONDS.sleep(1);
-                System.out.println("Goodbye!");
-                System.exit(0);
-            }
-
-            default -> {
-                char retry = userInput.nextLine().charAt(0);
-                System.out.println("Invalid input. Please enter a valid key");
-                promptChecker(retry);
-            }
-        }
-    }
-
     public static void triggerSubMenu(int menuOption) throws InterruptedException {
         switch (menuOption) {
             case 0 -> {
-                System.out.println();
-                System.out.println("Phone Book");
-                System.out.println();
-                System.out.println("""
-                        Select an option:
-                        1. Search
-                        2. Service Nos.
-                        3. Add name
-                        4. Erase
-                        5. Edit
-                        6. Assign tone
-                        7. Send b’card
-                        8. Options
-                        9. Speed dials
-                        10. Voice tags
-                                         
-                        > """);
+                    System.out.println();
+                    System.out.println("Phone Book");
+                    System.out.println();
+                    System.out.print("""
+                            Select an option:
+                            1. Search
+                            2. Service Nos.
+                            3. Add name
+                            4. Erase
+                            5. Edit
+                            6. Assign tone
+                            7. Send b’card
+                            8. Options
+                            9. Speed dials
+                            10. Voice tags
+                            0. Back
+                                             
+                            > """);
 
-                int phoneChoice = userInput.nextInt();
+//                Integer integer = subSubMenu[0] == -1 ? (subSubMenu[0] = userInput.nextInt()) : (subSubMenu[0]);
 
+                int userChoice = userInput.nextInt();
                 System.out.println();
 
-                switch (phoneChoice) {
+                switch (userChoice) {
+                    case 0 -> {
+                        triggerMainMenu(menu);
+                        break;
+                    }
+
                     case 1 -> {
                         System.out.println("Search");
                         break;
@@ -144,9 +163,10 @@ public class Nokia {
                                 
                                 > """);
 
-                        int userChoice = userInput.nextInt();
+                        int userChoice2 = userInput.nextInt();
 
-                        switch (userChoice) {
+                        switch (userChoice2
+                        ) {
                             case 1 -> {
                                 System.out.println("Type Of View");
                                 break;
@@ -189,7 +209,7 @@ public class Nokia {
                 System.out.println();
                 System.out.println("Messages");
                 System.out.println();
-                System.out.println("""
+                System.out.print("""
                         Select an option:
                         1. Write messages
                         2. Inbox
@@ -201,12 +221,18 @@ public class Nokia {
                         8. Info service
                         9. Voice mailbox number
                         10.Service command editor   
+                        0. Back
                                          
                         > """);
 
                 int messageChoice = userInput.nextInt();
 
                 switch (messageChoice) {
+                    case 0 -> {
+                        triggerMainMenu(menu);
+                        break;
+                    }
+
                     case 1 -> {
                         System.out.println("Write messages");
                         break;
@@ -242,13 +268,13 @@ public class Nokia {
                         System.out.println("1. Set 1");
                         System.out.println("2. Common");
                         System.out.print("> ");
-                        System.out.println();
+
                         int bottomMessageOutput = userInput.nextInt();
 
                         switch (bottomMessageOutput) {
                             case 1 -> {
                                 System.out.println("Set 1");
-                                System.out.println("""
+                                System.out.print("""
                                         1. Message centre number
                                         2. Messages sent as
                                         3. Message validity
@@ -275,7 +301,7 @@ public class Nokia {
 
                                     default -> {
                                         System.out.println("Invalid menu option.");
-                                        promptChecker('m');
+                                        triggerSubMenu(1);
                                     }
                                 }
 
@@ -284,7 +310,7 @@ public class Nokia {
 
                             case 2 -> {
                                 System.out.println("Common");
-                                System.out.println("""
+                                System.out.print("""
                                         1. Delivery reports
                                         2. Reply via same centre
                                         3. Character support                                     
@@ -311,7 +337,7 @@ public class Nokia {
 
                                     default -> {
                                         System.out.println("Invalid menu option.");
-                                        promptChecker('m');
+                                        triggerSubMenu(1);
                                     }
                                 }
 
@@ -319,8 +345,8 @@ public class Nokia {
                             }
 
                             default -> {
-                                System.out.println("Invalid menu option.");
-                                promptChecker('m');
+                                System.out.print("Invalid menu option.");
+                                triggerSubMenu(1);
                             }
                         }
 
@@ -348,6 +374,14 @@ public class Nokia {
 
             case 2 -> {
                 System.out.println("Chat");
+
+                System.out.println();
+
+                System.out.println("Press 'm' to access the main menu.");
+                System.out.print("> ");
+                char back = userInput.next().charAt(0);
+
+                promptChecker(back);
                 break;
             }
 
@@ -355,7 +389,7 @@ public class Nokia {
                 System.out.println();
                 System.out.println("Call Register");
                 System.out.println();
-                System.out.println("""
+                System.out.print("""
                         Select an option:
                         1. Missed calls
                         2. Received calls
@@ -365,12 +399,18 @@ public class Nokia {
                         6. Show call costs
                         7. Call cost settings
                         8. Prepaid settings
+                        0. Back
                                          
                         > """);
 
                 int callChoice = userInput.nextInt();
 
                 switch (callChoice) {
+                    case 0 -> {
+                        triggerMainMenu(menu);
+                        break;
+                    }
+
                     case 1 -> {
                         System.out.println("Missed calls");
                         break;
@@ -383,6 +423,7 @@ public class Nokia {
 
                     case 3 -> {
                         System.out.println("Dialled numbers");
+                        break;
                     }
 
                     case 4 -> {
@@ -392,7 +433,7 @@ public class Nokia {
 
                     case 5 -> {
                         System.out.println("Show call duration");
-                        System.out.println("""
+                        System.out.print("""
                                 1. Last call duration
                                 2. All calls’ duration
                                 3. Received calls’ duration
@@ -431,7 +472,7 @@ public class Nokia {
 
                             default -> {
                                 System.out.println("Invalid Choice! Try again");
-                                triggerSubMenu(0);
+                                triggerSubMenu(3);
                             }
                         }
 
@@ -440,7 +481,7 @@ public class Nokia {
 
                     case 6 -> {
                         System.out.println("Show call costs");
-                        System.out.println("""
+                        System.out.print("""
                                 1. Last call cost
                                 2. All calls’ cost
                                 3. Clear counters
@@ -466,7 +507,7 @@ public class Nokia {
 
                             default -> {
                                 System.out.println("Invalid Choice! Try again");
-                                triggerSubMenu(0);
+                                triggerSubMenu(3);
                             }
                         }
 
@@ -475,7 +516,7 @@ public class Nokia {
 
                     case 7 -> {
                         System.out.println("Call cost settings");
-                        System.out.println("""
+                        System.out.print("""
                                 1. Call cost limit
                                 2. Show costs in
                                                                
@@ -495,7 +536,7 @@ public class Nokia {
 
                             default -> {
                                 System.out.println("Invalid Choice! Try again");
-                                triggerSubMenu(0);
+                                triggerSubMenu(3);
                             }
                         }
 
@@ -509,7 +550,7 @@ public class Nokia {
 
                     default -> {
                         System.out.println("Invalid Choice! Try again");
-                        triggerSubMenu(0);
+                        triggerSubMenu(3);
                     }
                 }
 
@@ -518,9 +559,9 @@ public class Nokia {
 
             case 4 -> {
                 System.out.println();
-                System.out.println("Phone Book");
+                System.out.println("Tones");
                 System.out.println();
-                System.out.println("""
+                System.out.print("""
                         Select an option:
                         1. Ringing tone
                         2. Ringing volume
@@ -530,7 +571,8 @@ public class Nokia {
                         6. Keypad tones
                         7. Warning and game tones
                         8. Vibrating alert
-                        9. Screen saver      
+                        9. Screen saver 
+                        0. Back     
                                          
                         > """);
 
@@ -539,6 +581,11 @@ public class Nokia {
                 System.out.println();
 
                 switch (phoneChoice) {
+                    case 0 -> {
+                        triggerMainMenu(menu);
+                        break;
+                    }
+
                     case 1 -> {
                         System.out.println("Ringing Tone");
                         break;
@@ -586,7 +633,7 @@ public class Nokia {
 
                     default -> {
                         System.out.println("Invalid Choice! Try again");
-                        triggerSubMenu(0);
+                        triggerSubMenu(4);
                     }
                 }
 
@@ -597,20 +644,26 @@ public class Nokia {
                 System.out.println();
                 System.out.println("Settings");
                 System.out.println();
-                System.out.println("""
+                System.out.print("""
                         Select an option:
                         1. Call Settings
                         2. Phone Settings
                         3. Security Settings  
+                        0. Back
                                          
                         > """);
 
                 int settingsChoice = userInput.nextInt();
 
                 switch (settingsChoice) {
+                    case 0 -> {
+                        triggerMainMenu(menu);
+                        break;
+                    }
+
                     case 1 -> {
                         System.out.println("Call Settings");
-                        System.out.println("""
+                        System.out.print("""
                                 1. Automatic redial
                                 2. Speed dialling
                                 3. Call waiting options
@@ -654,7 +707,7 @@ public class Nokia {
 
                             default -> {
                                 System.out.println("Invalid Choice! Try again");
-                                triggerSubMenu(0);
+                                triggerSubMenu(5);
                             }
                         }
 
@@ -663,7 +716,7 @@ public class Nokia {
 
                     case 2 -> {
                         System.out.println("Phone Settings");
-                        System.out.println("""
+                        System.out.print("""
                                 1. Language
                                 2. Cell info display
                                 3. Welcome note
@@ -707,7 +760,7 @@ public class Nokia {
 
                             default -> {
                                 System.out.println("Invalid Choice! Try again");
-                                triggerSubMenu(0);
+                                triggerSubMenu(5);
                             }
                         }
 
@@ -716,7 +769,7 @@ public class Nokia {
 
                     case 3 -> {
                         System.out.println("Phone Settings");
-                        System.out.println("""
+                        System.out.print("""
                                 1. PIN code request
                                 2. Call barring service
                                 3. Fixed dialling
@@ -760,7 +813,7 @@ public class Nokia {
 
                             default -> {
                                 System.out.println("Invalid Choice! Try again");
-                                triggerSubMenu(0);
+                                triggerSubMenu(5);
                             }
                         }
 
@@ -774,7 +827,7 @@ public class Nokia {
 
                     default -> {
                         System.out.println("Invalid Choice! Try again");
-                        triggerSubMenu(0);
+                        triggerSubMenu(5);
                     }
                 }
 
@@ -783,29 +836,61 @@ public class Nokia {
 
             case 6 -> {
                 System.out.println("Call divert");
+
+                System.out.println();
+
+                System.out.println("Press 'm' to access the main menu.");
+                System.out.print("> ");
+                char back = userInput.next().charAt(0);
+
+                promptChecker(back);
                 break;
             }
 
             case 7 -> {
                 System.out.println("Games");
+
+                System.out.println();
+
+                System.out.println("Press 'm' to access the main menu.");
+                System.out.print("> ");
+                char back = userInput.next().charAt(0);
+
+                promptChecker(back);
                 break;
             }
 
             case 8 -> {
                 System.out.println("Calculator");
+
+                System.out.println();
+
+                System.out.println("Press 'm' to access the main menu.");
+                System.out.print("> ");
+                char back = userInput.next().charAt(0);
+
+                promptChecker(back);
                 break;
             }
 
             case 9 -> {
                 System.out.println("Reminders");
+
+                System.out.println();
+
+                System.out.println("Press 'm' to access the main menu.");
+                System.out.print("> ");
+                char back = userInput.next().charAt(0);
+
+                promptChecker(back);
                 break;
             }
 
             case 10 -> {
                 System.out.println();
-                System.out.println("Phone Book");
+                System.out.println("Clock");
                 System.out.println();
-                System.out.println("""
+                System.out.print("""
                         Select an option:
                         1. Alarm clock
                         2. Clock settings
@@ -813,6 +898,7 @@ public class Nokia {
                         4. Stopwatch
                         5. Countdown timer
                         6. Auto update of date and time
+                        0. Back
                         
                         > """);
 
@@ -821,6 +907,11 @@ public class Nokia {
                 System.out.println();
 
                 switch (phoneChoice) {
+                    case 0 -> {
+                        triggerMainMenu(menu);
+                        break;
+                    }
+
                     case 1 -> {
                         System.out.println("Alarm clock");
                         break;
@@ -853,7 +944,7 @@ public class Nokia {
 
                     default -> {
                         System.out.println("Invalid Choice! Try again");
-                        triggerSubMenu(0);
+                        triggerSubMenu(10);
                     }
                 }
 
@@ -862,11 +953,27 @@ public class Nokia {
 
             case 11 -> {
                 System.out.println("Profiles");
+
+                System.out.println();
+
+                System.out.println("Press 'm' to access the main menu.");
+                System.out.print("> ");
+                char back = userInput.next().charAt(0);
+
+                promptChecker(back);
                 break;
             }
 
             case 12 -> {
                 System.out.println("SIM Services");
+
+                System.out.println();
+
+                System.out.println("Press 'm' to access the main menu.");
+                System.out.print("> ");
+                char back = userInput.next().charAt(0);
+
+                promptChecker(back);
                 break;
             }
 
