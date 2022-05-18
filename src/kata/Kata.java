@@ -69,6 +69,22 @@ public class Kata {
         return factors.size();
     }
 
+    public static boolean isPrime(int number) {
+        boolean isPrimeNumber = false;
+
+        for (int i = 2; i <= number; i++) {
+            isPrimeNumber = true;
+            for (int j = 2; j < i; j++) {
+                if (i % j == 0) {
+                    isPrimeNumber = false;
+                    break;
+                }
+            }
+        }
+
+        return isPrimeNumber;
+    }
+
     public int add(int firstNum, int secondNum) {
         return firstNum + secondNum;
     }
