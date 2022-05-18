@@ -182,4 +182,13 @@ public class KataTest {
         factors = Kata.checkFactors(18);
         assertEquals(6, factors);
     }
+
+    @Test
+    public void isPrime() {
+        boolean isPrime = Kata.isPrime(9);
+        assertEquals(false, isPrime);
+
+        isPrime = Kata.isPrime(5);
+        assertEquals(true, isPrime);
+    }
 }
