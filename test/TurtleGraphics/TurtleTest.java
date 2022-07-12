@@ -125,13 +125,54 @@ public class TurtleTest {
         assertEquals(expectedPos, turtle.getCurrentPosition());
     }
 
+//    TODOs: Create your `assert` for the two tests.
+
     @Test
     public void whenPenIsDown_TurtleCanWrite(){
         Sketchpad draw = new Sketchpad(5, 5);
         turtle.penDown();
-        turtle.move(5, draw);
+        turtle.move(4, draw);
 
-        assertEquals(new Position(5, 0), turtle.getCurrentPosition());
+        int currentColumn = turtle.getCurrentPosition().getX();
+        int currentRow = turtle.getCurrentPosition().getY();
+
+        assertEquals(new Position(4, 0), turtle.getCurrentPosition());
+
+        for (int i = 0; i < draw.getFloor().length; i++) {
+            assertEquals(1, draw.getFloor()[currentRow][i]);
+        }
+//        System.out.println(Arrays.deepToString(draw.getFloor()));
+    }
+
+    @Test
+    public void whenPenIsDown_AssertAllPossibilities_DrawACircleTest(){
+        turtle.penDown();
+        turtle.move(4, draw);
+        turtle.turnRight();
+
+        turtle.move(4, draw);
+        turtle.turnRight();
+
+        turtle.move(4, draw);
+        turtle.turnRight();
+
+        turtle.move(4, draw);
+        turtle.turnRight();
+
         System.out.println(Arrays.deepToString(draw.getFloor()));
+        assertEquals(new Position(0, 0), turtle.getCurrentPosition());
+    }
+
+    @Test
+    public void whileTurtleIsOnZero_TurtleCannotMoveNegativelyRow() {
+        turtle.turnLeft();
+        turtle.move(3, draw);
+
+        assertEquals(new Position(0, 0), turtle.getCurrentPosition());
+    }
+
+    @Test
+    public void whileTurtleIsOnZero_TurtleCannotMoveNegativelyColumn(){
+        
     }
 }
