@@ -133,4 +133,41 @@ public class Kata {
             price = orderNum * 1_000;
         }
     }
+
+    public static double find_average(int[] array){
+        double sum=0;
+        double avg=0;
+        for (int i=0;i<array.length;i++)
+            sum+=array[i];
+
+        avg=sum/array.length;
+        return avg;
+    }
+
+    public static int[] arrayDiff(int[] a, int[] b) {
+        int newLength = 0;
+
+        for(int i = 0; i < a.length;  i++){
+            for (int j = 0; j < b.length; j++){
+                if (b[j] == a[i]) {
+                    a[i] = -1;
+                }
+            }
+
+            if(a[i] != -1){
+                newLength++;
+            }
+        }
+
+        ArrayList<Integer> newArr = new ArrayList<>();
+
+        for (int i = 0; i < a.length; i++){
+            if(a[i] != -1){
+                newArr.add(a[i]);
+            }
+        }
+
+        int[] ar = newArr.stream().mapToInt(i -> i).toArray();
+        return ar;
+    }
 }
